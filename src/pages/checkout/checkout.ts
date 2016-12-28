@@ -24,6 +24,7 @@ import {
 import {
     LoadingController
 } from 'ionic-angular';
+import { Platform } from 'ionic-angular';
 /*
  Generated class for the LoginPage page.
 
@@ -57,6 +58,7 @@ export class CheckoutPage {
         public navParams: NavParams,
         public cartService: CartService,
         private valuesService: ValuesService,
+        private platform: Platform,
         public loadingCtrl: LoadingController) {
         // set data for categories
         this.cart = cartService.getCart();
@@ -137,15 +139,62 @@ export class CheckoutPage {
 
         alert.present();
     }
+    
+    public onSubmit(){
+        var amt = this.total * 100;
+        var options = {
+          description: 'Credits towards consultation',
+          image: 'https://i.imgur.com/3g7nmJC.png',
+          currency: 'INR',
+          key: 'rzp_test_TXWGPmvIG46GTp',
+          amount: amt,
+          name: '99Meat',
+          prefill: {
+            email: '',
+            contact: '',
+            name: ''
+          },
+          theme: {
+            color: '#F37254'
+          },
+          modal: {
+            ondismiss: function() {
+              alert('dismissed');
+              this.loading.dismiss();
+            }
+          }
+        };
+
+        var successCallback = function(payment_id) {
+          alert('payment_id: ' + payment_id);
+          this.loading.dismiss();
+        };
+
+        var cancelCallback = function(error) {
+          alert(error.description + ' (Error ' + error.code + ')');
+          this.loading.dismiss();
+        };
+
+        this.platform.ready().then(() => {
+          RazorpayCheckout.open(options, successCallback, cancelCallback);
+        })
+    }
 
     public PlaceOrder(OrdDetail: any) {
-        this.valuesService.PostOrder(OrdDetail).subscribe(
+        if(this.paymentMethod == 1)
+        {
+            this.onSubmit();
+        }
+        else
+        {
+            this.valuesService.PostOrder(OrdDetail).subscribe(
             data => {
                 this.getUserInfo();
             },
             error => {
                 this.loading.dismiss();
             });
+        }        
     }
 		
 		public getUserInfo()
