@@ -38,8 +38,8 @@
     <plugin name="ionic-plugin-keyboard" spec="~2.2.1" />
     <plugin name="ionic-plugin-deploy" spec="~0.6.5" />
     <plugin name="cordova-plugin-facebook4" spec="~1.7.4">
-        <variable name="APP_ID" value="1828020577450397" />
-        <variable name="APP_NAME" value="com.99Meat.app" />
+        <variable name="APP_ID" value="206845009776190" />
+        <variable name="APP_NAME" value="99Meat - Test2" />
     </plugin>
     <plugin name="cordova-plugin-inappbrowser" spec="~1.6.1" />
     <plugin name="cordova-plugin-whitelist" spec="~1.3.1" />
