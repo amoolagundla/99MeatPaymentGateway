@@ -118,6 +118,30 @@ public password:string;
 }
      loginFB() {
        this.ll();
+	   
+	   
+	    // GET api/values/GetDistance/{sourceAdd}/{destination}
+        [HttpGet]
+        [Route("api/values/GetDistance/{sourceAdd}/{destination}")]
+        public IHttpActionResult GetDistance(string sourceAdd,string destination)
+        {
+            var request = new Google.Maps.DistanceMatrix.DistanceMatrixRequest();
+            request.AddDestination(new Google.Maps.Waypoint()
+            {
+                 Address= sourceAdd
+            });
+            request.AddOrigin(new Google.Maps.Waypoint()
+            {
+                Address = destination,
+                    });
+            request.Sensor = false;
+            request.Mode = Google.Maps.TravelMode.driving;
+            var distance = new Google.Maps.DistanceMatrix.DistanceMatrixService();
+            
+            var dist = distance.GetResponse(request);
+            return Ok(dist);
+        }
+		
     }*/
      
      FB_APP_ID: number = 1828020577450397;
