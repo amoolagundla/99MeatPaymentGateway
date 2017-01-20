@@ -9,7 +9,7 @@ export class HttpClient {
 
   createAuthorizationHeader(headers: Headers) {
 		let currentUser = JSON.parse(localStorage.getItem('currentUser'));
-		
+	
 		headers.append('Authorization', 'Bearer ' + currentUser ); 
 headers.append( 'Content-Type', 'application/json' );
 

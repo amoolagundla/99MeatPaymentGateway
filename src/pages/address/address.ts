@@ -4,6 +4,7 @@ import {Address,UserInfo} from '../../app/app.module';
 import { ValuesService } from '../../services/ValuesService';
 import { LoadingController } from 'ionic-angular';
 import {LoginPage} from '../login/login';
+import {Distance } from '../../providers/distance';
 /*
   Generated class for the Address page.
 
@@ -41,9 +42,10 @@ public address:any={
 
   constructor(public navCtrl: NavController,
 	public loadingCtrl: LoadingController,
-	public valuesService:ValuesService) {
+	public valuesService:ValuesService,
+	public distance:Distance) {
 			let currentUser = 	localStorage.getItem('UserInfo');
-			console.log(currentUser);
+			
 			if(currentUser!=null)
 			{
 				this.userInfo =  this.valuesService.UserInfo;
@@ -65,8 +67,35 @@ public address:any={
 	}
 EditAddress(Addresses:any)
 {
-	this.address=Addresses;
+	let sourceAddress =Addresses.Address1+Addresses.Address2+Addresses.Address3+Addresses.City+Addresses.State+Addresses.PostalCode;
+	
+	this.distance.getDuration(sourceAddress.replace(/[\s]/g, ''),'5951vistadrivewestdesmoines').subscribe(
+                data => {				
+                   console.log(data);
+				   this.address=Addresses;
 	this.myVar=!this.myVar;
+				
+					alert(data.rows[0].elements[0].duration.text);
+                }, 
+                error => {
+                  	
+                });	
+	
+}
+
+getDist(Addresses)
+{
+	let sourceAddress =Addresses.Address1+Addresses.Address2+Addresses.Address3+Addresses.City+Addresses.State+Addresses.PostalCode;
+	this.distance.getDuration(sourceAddress.replace(/[\s]/g, ''),'5951vistadrivewestdesmoines').subscribe(
+                data => {				
+                   console.log(data);
+				   
+				
+					alert(data.rows[0].elements[0].duration.text);
+                }, 
+                error => {
+                  	
+                });	
 }
 GoBack()
 {

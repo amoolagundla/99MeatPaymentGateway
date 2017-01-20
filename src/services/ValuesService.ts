@@ -13,7 +13,7 @@ export class ValuesService {
     constructor(private http: HttpClient) { }
 
     getAll() {
-       return this.http.get('http://localhost:53852/api/UserInfo').map<UserInfo>((response: Response) => response.json())  .catch((error: any) => {
+       return this.http.get('http://99pumba.azurewebsites.net/api/UserInfo').map<UserInfo>((response: Response) => response.json())  .catch((error: any) => {
          
           return Observable.throw(error.message || error);
       });
@@ -21,14 +21,14 @@ export class ValuesService {
     }
 
     getValues() {
-        return this.http.get('http://localhost:53852/api/Values').map((response: Response) => response.json())  .catch((error: any) => {
+        return this.http.get('http://99pumba.azurewebsites.net/api/Values').map((response: Response) => response.json())  .catch((error: any) => {
           
           return Observable.throw(error.message || error);
       });
 
     }
 		UpdateProfile(userInfo:UserInfo) {
-        return this.http.post('http://localhost:53852/api/UserInfo',JSON.stringify(userInfo)).map((response: Response) => response.json())  .catch((error: any) => {
+        return this.http.post('http://99pumba.azurewebsites.net/api/UserInfo',JSON.stringify(userInfo)).map((response: Response) => response.json())  .catch((error: any) => {
       
           return Observable.throw(error.message || error);
       });
@@ -36,21 +36,21 @@ export class ValuesService {
     }
 		
 		  UpdateAddress(Address:any) {
-        return this.http.put('http://localhost:53852/api/Addresses/'+Address.Id,Address).map((response: Response) => response)  .catch((error: any) => {
+        return this.http.put('http://99pumba.azurewebsites.net/api/Addresses/'+Address.Id,Address).map((response: Response) => response)  .catch((error: any) => {
         
           return Observable.throw(error.message || error);
       });
 
     }
 		InsertAddress(Address:any) {
-        return this.http.post('http://localhost:53852/api/Addresses/',Address).map((response: Response) => response.json())  .catch((error: any) => {
+        return this.http.post('http://99pumba.azurewebsites.net/api/Addresses/',Address).map((response: Response) => response.json())  .catch((error: any) => {
          
           return Observable.throw(error.message || error);
       });
 
     }
 			DeleteAddress(id:any) {
-        return this.http.delete('http://localhost:53852/api/Addresses/'+id).map((response: Response) => response)  .catch((error: any) => {
+        return this.http.delete('http://99pumba.azurewebsites.net/api/Addresses/'+id).map((response: Response) => response)  .catch((error: any) => {
           
           return Observable.throw(error.message || error);
       });
@@ -58,7 +58,7 @@ export class ValuesService {
     }
 		
 		Register(user:any) {
-        return this.http.post('http://localhost:53852/api/Account/Register',user).map((response: Response) => response.json())
+        return this.http.post('http://99pumba.azurewebsites.net/api/Account/Register',user).map((response: Response) => response.json())
 				   .catch((error: any) => {
          
           return Observable.throw(error.message || error);
@@ -68,7 +68,7 @@ export class ValuesService {
     }
 		
 		PostOrder(Order:any) {
-        return this.http.post('http://localhost:53852/api/Orders',Order).map((response: Response) => response.json())
+        return this.http.post('http://99pumba.azurewebsites.net/api/Orders',Order).map((response: Response) => response.json())
 				   .catch((error: any) => {
          
           return Observable.throw(error.message || error);
@@ -77,7 +77,7 @@ export class ValuesService {
      
     }
 		PostChangePassword(passwords:any) {
-        return this.http.post('http://localhost:53852/api/Account/ChangePassword',passwords).map((response: Response) => response.json())
+        return this.http.post('http://99pumba.azurewebsites.net/api/Account/ChangePassword',passwords).map((response: Response) => response.json())
 				   .catch((error: any) => {
          
           return Observable.throw(error.message || error);
@@ -96,14 +96,14 @@ export class ValuesService {
 					}
 		
 	 getAllCategories() { 
-        return this.http.get('http://localhost:53852/api/Categories').map((response: Response) => response.json())  .catch((error: any) => {
+        return this.http.get('http://99pumba.azurewebsites.net/api/Categories').map((response: Response) => response.json())  .catch((error: any) => {
         
           return Observable.throw(error.message || error);
       });
 
     }
 		 getAllProducts(id:any) {
-        return this.http.get('http://localhost:53852/api/Products/'+id).map((response: Response) => response.json()) .catch((error: any) => {
+        return this.http.get('http://99pumba.azurewebsites.net/api/Products/'+id).map((response: Response) => response.json()) .catch((error: any) => {
         
           return Observable.throw(error.message || error);
       });

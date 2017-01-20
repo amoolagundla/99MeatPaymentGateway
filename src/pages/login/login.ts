@@ -43,7 +43,7 @@ public password:string;
               private authenticationService: AuthenticationService,
               public loadingCtrl: LoadingController,
               public valuesService: ValuesService,
-              public alertCtrl: AlertController,public platform:Platform,)
+              public alertCtrl: AlertController,public platform:Platform, public alertController: AlertController)
               {           
               this.platform = platform;
                 localStorage.removeItem("UserInfo");
@@ -61,12 +61,13 @@ public password:string;
      this.authenticationService.login(this.username, this.password)
             .subscribe(
                 data => {
+					alert(data);
                     this.getUserInfo();                   
   
                 }, 
                 error => {
                   this.loading.dismiss();
-                  this.nav.setRoot(LoginPage);
+                 console.log(error.json());
                 });
     
   }

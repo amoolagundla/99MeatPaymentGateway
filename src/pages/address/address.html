@@ -22,11 +22,11 @@
 <ion-content padding class="cart gray-bg">  <small  class="text-danger">
         Slide to remove Address
       </small>
-  <ion-list class="list-no-border" inset  *ngIf="userInfo.Addresses.length>0">
+  <ion-list class="list-no-border" inset  *ngIf="userInfo.Addresses.length>0" >
 
-    <ion-item-sliding class="card"   *ngFor="let Addresses of userInfo.Addresses;let i = index"   [hidden]="myVar" margin-top fab-center>
-      <ion-item>
-        <p> {{Addresses.Address1}}, {{Addresses.Address2}} </p><button ion-button item-right  (click)="EditAddress(Addresses)" >  <ion-icon name="create"></ion-icon>
+    <ion-item-sliding class="card"   *ngFor="let Addresses of userInfo.Addresses;let i = index"   [hidden]="myVar" margin-top fab-center > 
+      <ion-item >
+        <p ng-click="getDist(Addresses)"> {{Addresses.Address1}}, {{Addresses.Address2}} </p><button ion-button item-right  (click)="EditAddress(Addresses)" >  <ion-icon name="create"></ion-icon>
           </button>
 	 <p>	{{Addresses.Address3}}</p> 
 	

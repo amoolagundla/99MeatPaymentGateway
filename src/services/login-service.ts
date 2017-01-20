@@ -11,7 +11,7 @@ export class AuthenticationService {
  
     login(userName: string, Password: string) {
 			
-			 let url = "http://localhost:53852/Token";
+			 let url = "http://99pumba.azurewebsites.net/Token";
         let body = "username=" + userName + "&password=" + Password + "&grant_type=password";
         let headers = new Headers();
 				headers.append( 'Content-Type', 'application/x-www-form-urlencoded' );
@@ -29,12 +29,12 @@ export class AuthenticationService {
 											localStorage.setItem('userName', JSON.stringify(user.userName));
 										return response.json();
                 }
-            }).catch(this.handleError);
+            });
       
     }
           private handleError(error:Response)
 					{
-						return Observable.throw(error.json().error ||'server error');
+						return error.json();
 					}
     logout() {
         // remove user from local storage to log user out

@@ -3,6 +3,7 @@ import {IonicApp, IonicModule} from 'ionic-angular';
 import {MyApp} from './app.component';
 import { FormsModule } from '@angular/forms';
 // import services
+import {Distance} from '../providers/distance';
 import {MenuService} from '../services/menu-service';
 import {CategoryService} from '../services/category-service';
 import {ItemService} from '../services/item-service';
@@ -98,7 +99,8 @@ import {LogoutPage} from '../pages/logout/logout';
     ChatService,
 		AuthenticationService,
 		HttpClient,
-		ValuesService
+		ValuesService,
+		Distance
     /* import services */
   ]
 })
