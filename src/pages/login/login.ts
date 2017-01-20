@@ -61,13 +61,20 @@ public password:string;
      this.authenticationService.login(this.username, this.password)
             .subscribe(
                 data => {
-					alert(data);
+				
                     this.getUserInfo();                   
   
                 }, 
                 error => {
                   this.loading.dismiss();
-                 console.log(error.json());
+                 let er =error.json();
+				  let alert = this.alertCtrl.create({
+    title: 'Login Error ',
+    subTitle: er.error_description,
+    buttons: ['Dismiss']
+  });
+  alert.present();
+  this.nav.setRoot(LoginPage);
                 });
     
   }
