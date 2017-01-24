@@ -21,8 +21,9 @@
 </ion-header>
 
 <ion-content>
-<ion-card *ngFor="let item of category"  >
-   <img src="{{ item.thumb }}" alt="{{ item.name }}" (click)="viewItem(item)"/>
+<ion-card *ngFor="let item of category"  class="animated slideInUp" >
+  <img src="http://99pumba.azurewebsites.net/{{ item.thumb }}" alt="{{ item.name }}" (click)="viewItem(item)"/>
+
   <ion-card-content>
   </ion-card-content>
 	 <ion-row no-padding>

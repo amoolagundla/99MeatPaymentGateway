@@ -33,8 +33,9 @@
     </ion-refresher-content>
 		</ion-refresher>
 	
-<ion-card *ngFor="let category of categories"  (click)="ViewCategory(category.Items)">
-   <img src="{{ category.thumb }}" alt="{{ category.name }}"/>
+<ion-card *ngFor="let category of categories"  class="animated slideInUp" (click)="ViewCategory(category.Items)">
+  
+   <img src="http://99pumba.azurewebsites.net/{{ category.thumb }}" alt="{{ category.name }}"/>
   <ion-card-content>
     <ion-card-title>
     {{ category.Name }}  

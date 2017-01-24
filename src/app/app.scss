@@ -137,9 +137,10 @@ img.profile-picture {
 
 // style for auth pages
 .auth-bg {
-  background: url("../assets/img/bg.jpg") no-repeat center;
+ 
   background-size: 100% 100%;
-
+  background-color:gray;
+color:black;
   .scroll-content {
     display: flex;
     align-items: center;
@@ -174,11 +175,11 @@ img.profile-picture {
 
           ion-label {
             font-size: 1em;
-            color: color($colors, light);
+             color: black;
           }
 
           input {
-            color: color($colors, light);
+            color: black;
           }
         }
       }
