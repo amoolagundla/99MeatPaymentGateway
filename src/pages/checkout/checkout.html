@@ -76,10 +76,13 @@
       </ion-label>
       <ion-radio (click)="GetAddressId(Addresses.Id)"></ion-radio>
     </ion-item>
-  </ion-list>
-  <button   class="btn btn-block btn-danger" *ngIf="userInfo.Addresses.length==0" (click)="GoToAddress()" >
-      Add an Address
+	<ion-item  >
+	<button   class="btn btn-block btn-danger" (click)="GoToAddress()" >
+      Add a New  Address
     </button>
+	</ion-item>
+  </ion-list>
+  
 </ion-content>
 
 <!--Footer button-->

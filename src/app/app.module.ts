@@ -27,6 +27,8 @@ import {CategoryPage} from '../pages/category/category';
 import {ChatDetailPage} from '../pages/chat-detail/chat-detail';
 import {ChatsPage} from '../pages/chats/chats';
 import {CheckoutPage} from '../pages/checkout/checkout';
+
+import { ModalContentPage } from '../pages/checkout/ModalContentPage';
 import {FavoritePage} from '../pages/favorite/favorite';
 import {HomePage} from '../pages/home/home';
 import {ItemPage} from '../pages/item/item';
@@ -61,7 +63,8 @@ import {LogoutPage} from '../pages/logout/logout';
     UserPage,
 		LogoutPage,
 		MyOrdersPage,
-		ChangePasswordPage
+		ChangePasswordPage,
+		ModalContentPage
   ],
   imports: [
     IonicModule.forRoot(MyApp,{tabsPlacement: 'top'}),
@@ -88,7 +91,8 @@ import {LogoutPage} from '../pages/logout/logout';
     SettingPage,
     UserPage,
 		MyOrdersPage,
-		ChangePasswordPage
+		ChangePasswordPage,
+		ModalContentPage
   ],
   providers: [
     MenuService,

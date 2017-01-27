@@ -24,6 +24,9 @@ import {
 import {
     LoadingController
 } from 'ionic-angular';
+import { ModalController,Events } from 'ionic-angular';
+import { ModalContentPage } from './ModalContentPage';
+
 /*
  Generated class for the LoginPage page.
 
@@ -57,7 +60,8 @@ export class CheckoutPage {
         public navParams: NavParams,
         public cartService: CartService,
         private valuesService: ValuesService,
-        public loadingCtrl: LoadingController) {
+        public loadingCtrl: LoadingController,
+		public modalCtrl: ModalController,public events:Events) {
         // set data for categories
         this.cart = cartService.getCart();
         let currentUser = localStorage.getItem('UserInfo');
@@ -65,8 +69,29 @@ export class CheckoutPage {
         if(currentUser != null) {
             this.userInfo = SerializationHelper.toInstance(new UserInfo(), currentUser);
         }
+		this.events.subscribe('myEvent',() => {
+
+         this.getUserInfosw();
+
+});
     }
 
+	
+
+ getUserInfosw()
+  {
+    this.valuesService.getAll()
+            .subscribe(
+                data => {   
+                     this.userInfo = data;
+                localStorage.setItem('UserInfo',JSON.stringify(data)); 
+                }, 
+                error => {
+                 
+                  
+                });
+                
+  }
     // edit address
     editAddress() {
         let prompt = this.alertController.create({
@@ -98,8 +123,9 @@ export class CheckoutPage {
         this.addressId = Id;
     }
     GoToAddress() {
-
-            this.nav.push(AddressPage);
+            
+             let modal = this.modalCtrl.create(ModalContentPage);
+              modal.present();
         }
         // place order button click
     buy() {
